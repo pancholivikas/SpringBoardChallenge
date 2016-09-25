@@ -1,0 +1,75 @@
+<div class="col-md-10">
+	<div class="search">
+		<input type="text" ng-model="selected" uib-typeahead="tag for tag in vm.tags | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="vm.onSelect($item)" typeahead-loading="loadingTags" typeahead-no-results="noResults" placeholder="Search by tag">
+		<i ng-show="loadingTags" class="glyphicon glyphicon-refresh"></i>
+	    <span ng-show="noResults">
+	      <i class="glyphicon glyphicon-remove"></i> No Results Found
+	    </span>
+	</div>
+</div>
+
+ <div class="tab-content">
+	<div id="{{data.id}}" class="tab-pane fade" ng-class="{'active in' : data.id == vm.currentTabID}" ng-repeat = "data in vm.keys">
+	  	<div class = "col-md-10 details-container">
+			<div class="col-md-12 content-container">
+				<div class="col-md-3">
+					<img ng-src="{{data.image}}" height=100px width="100px">
+				</div>
+				<div class="col-md-9 title-container">
+					<div class="title">
+						{{data.name}}
+					</div>
+					
+					<span class="content description">
+						<i class="glyphicon glyphicon-tag"></i> {{data.tags}}
+					</span>
+
+					<div class="col-md-4 votes pull-left">
+						<span class="content">
+							<i class="glyphicon glyphicon-thumbs-up" ng-click="vm.setUpVotes(data.id, data.upVotes, data.downVotes)"></i>
+							<span>Learns : {{data.upVotes}}</span>
+						</span>
+						<span class="content">
+							<i class="glyphicon glyphicon-thumbs-down" ng-click="vm.setDownVotes(data.id, data.upVotes, data.downVotes)"></i>
+							<span>Hours : {{data.downVotes}}</span>
+						</span>
+					</div>
+
+					<div class="col-md-4 course-hours pull-right">
+						<span class="content">
+							<i class="glyphicon glyphicon-user"></i>
+							<span>Learns : {{data.learner}}</span>
+						</span>
+						<span class="content">
+							<i class="glyphicon glyphicon-time"></i>
+							<span>Hours : {{data.hours}}</span>
+						</span>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-12">
+				<span class="content description">
+					Description #
+				</span>
+				<div class="description-details">
+					{{data.description}}
+				</div>
+				<div class="col-md-2 button-container">
+					<a class="btn" href="{{data.sign_up}}" target="_blank">view details</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="col-md-10">
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+			  <li ng-repeat = "key in vm.keys" ng-class="{'active' : key.id == vm.currentTabID}" ng-click="vm.changeTab(key.id)">
+			  		<a data-toogle="tab" href="{{'#' + key.id}}">{{key.name}}</a>
+			  </li>
+			</ul>
+		</div>
+	</div>
+</div>

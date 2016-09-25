@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-10">
+		<h3> Learning Paths </h3>
+
+		<div class="col-md-9">
+			<div>
+				<i class="fa fa-sort-amount-desc"></i>Sort : 
+				<a class="sort-keys" ng-repeat="key in vm.keyData" ng-class="{'active' : vm.activeMenu === key.id}" ng-click="vm.setOrderProperty(key.id)">
+					{{key.name}}
+				</a>
+			</div>
+		</div>
+
+	</div>
+	
+</div>
+
+<div class = "col-md-10 data-container" ng-repeat="eachData in vm.data| orderBy: vm.orderProperty" ng-click="vm.gotoDetails(eachData.id)">
+	<div class="col-md-12 content-container">
+		<div class="col-md-3">
+			<img ng-src="{{eachData.image}}" height=50px width="50px">
+		</div>
+		<div class="col-md-9">
+			<span class="content">
+				<i class="glyphicon glyphicon-user"></i> Name : {{eachData.name}}
+			</span>
+			<span class="content">
+				<i class="glyphicon glyphicon-folder-close"></i> Description : {{eachData.description}}
+			</span>
+		</div>
+	</div>
+</div>
+

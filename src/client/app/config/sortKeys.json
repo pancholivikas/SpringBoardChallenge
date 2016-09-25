@@ -1,0 +1,20 @@
+{
+	"sortKeys": [
+		{
+			"id" : "upVotes",
+			"name" : "Vote (Up)"
+		},
+		{
+			"id" : "downVotes",
+			"name" : "Vote (Down)"
+		},
+		{
+			"id" : "learner",
+			"name" : "Learners"
+		},
+		{
+			"id" : "duration",
+			"name" : "Duration"
+		}
+	]
+}
